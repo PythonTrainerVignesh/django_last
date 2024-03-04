@@ -1,0 +1,12 @@
+{% include 'navbar.html' %}
+{% block content %}
+<br>
+<h1 style="text-align: center">Login</h1><br>
+{% endblock content %}
+
+<form style="text-align: center" action="" method="POST">
+    {% csrf_token %}
+USERNAME: <input type="text" name="uname"><br><br>
+PASSWORD: <input type="password" name="passwd"><br><br>
+    <input type="submit" value="LOGIN">
+</form>
