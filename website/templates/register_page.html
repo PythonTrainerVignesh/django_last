@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 {% include 'navbar.html' %}
 {% block content %}
+<style>
+    form{
+    text-align:center
+    }
+</style>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
 </head>
 <body>
-<h1>Welcome to the Registration page!</h1>
+<br>
+<h1 style="text-align:center">Register</h1>
+<br>
+<form method="POST" action="">
+    {% csrf_token %}
+{{ form.username.label }}: {{ form.username }} <br><br>
+{{ form.email.label }}: {{ form.email }} <br><br>
+{{ form.password1.label }}: {{ form.password1 }} <br><br>
+{{ form.password2.label }}: {{ form.password2 }} <br><br>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+</ul>
+{% endif %}
+    <input type="submit" value="REGISTER">
+</form>
 </body>
 {% endblock content %}
 </html>

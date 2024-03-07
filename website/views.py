@@ -2,6 +2,21 @@ from django.shortcuts import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
+from . import models
+from django.contrib import messages
+
+
+def registration_page(request):
+    form = models.RegisterForm()
+    context = {'form': form}
+    if request.method == "POST":
+        form = models.RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/login')
+        else:
+            messages.error(request, "User Creation Failed. Try again!")
+    return render(request, 'register_page.html', context)
 
 
 def home(request):
@@ -29,6 +44,3 @@ def logout_page(request):
 def dashboard(request):
     return render(request, 'dashboard.html')
 
-
-def registration_page(request):
-    return render(request, 'register_page.html')
