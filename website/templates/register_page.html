@@ -15,7 +15,7 @@
 <br>
 <h1 style="text-align:center">Register</h1>
 <br>
-<form method="POST" action="">
+<form method="POST" action="" autocomplete="off">
     {% csrf_token %}
 {{ form.username.label }}: {{ form.username }} <br><br>
 {{ form.email.label }}: {{ form.email }} <br><br>

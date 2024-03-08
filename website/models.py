@@ -19,6 +19,6 @@ class RegisterForm(UserCreationForm):
 class Students(models.Model):
     s_name = models.CharField(max_length=100)
     s_email = models.EmailField(max_length=100)
-    s_phone = models.BigIntegerField()
+    s_phone = models.BigIntegerField(null=True, blank=True)
     s_entry_date = models.DateTimeField(auto_now_add=True)
     manager = models.Manager()

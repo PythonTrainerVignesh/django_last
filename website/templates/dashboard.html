@@ -1,13 +1,72 @@
 <!DOCTYPE html>
 {% include 'navbar.html' %}
 {% block content %}
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 26%;
+      justify-content: center;
+      margin: 50px auto;
+    }
+
+    td, th {
+      border: 1px solid #000000;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #acc0e6;
+    }
+</style>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
 </head>
 <body>
-<h1>Welcome to the Dashboard!</h1>
+<br>
+<h1 style="text-align:center">Dashboard</h1>
+<div style="background-color: LightGrey ; text-align:center; margin: 45px auto; border: 2px solid black; padding: 20px; max-width: 500px">
+    <form method="POST" action="" autocomplete="off">
+        {% csrf_token %}
+        <b><label>Name: </label></b>
+        <input type="text" name="s_name" placeholder="Enter your Name"> <br><br>
+        <b><label>Email: </label></b>
+        <input type="text" name="email" placeholder="Enter your E-mail"> <br><br>
+        <b><label>Phone: </label></b>
+        <input type="text" name="phone" placeholder="Enter your Phone"> <br><br>
+        <input type="submit" value="ADD">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <br>
+            {{ message }}
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </form>
+</div>
+<table>
+    <tr>
+        <th>S.No</th>
+        <th>Name</th>
+        <th>E-Mail</th>
+        <th>Phone</th>
+        <th style="text-align: center" colspan="2">Options</th>
+    </tr>
+        {% for i in r_data %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ i.s_name }}</td>
+        <td>{{ i.s_email }}</td>
+        <td>{{ i.s_phone }}</td>
+        <td><button onclick="location.href='{% url 'homepage' %}'">Update</button></td>
+        <td><button onclick="location.href='{% url 'homepage' %}'">Delete</button></td>
+        {% endfor %}
+    </tr>
+</table>
 </body>
 {% endblock content %}
 </html>
