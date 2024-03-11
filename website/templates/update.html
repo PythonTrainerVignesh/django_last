@@ -20,13 +20,13 @@
         <label style="font-size: 30px">Phone</label><br><br>
         <input style="width: 300px; text-align: center" type="text" value="{{ data.s_phone }}" name="phone"><br><br>
         <input type="submit" value="Update">
-    {% if messages %}
-        <ul class="messages">
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}
-        </ul>
-    {% endif %}
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+            </ul>
+        {% endif %}
     </form>
 </div>
 </body>
