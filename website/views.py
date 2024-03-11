@@ -5,10 +5,6 @@ from . import models
 from django.contrib import messages
 
 
-def create_student(request):
-    pass
-
-
 def registration_page(request):
     form = models.RegisterForm()
     context = {'form': form}
@@ -60,3 +56,21 @@ def dashboard(request):
     r_data = models.Students.manager.all()
     context = {'r_data': r_data}
     return render(request, 'dashboard.html', context)
+
+
+def update_student(request, pk):
+    data = models.Students.manager.get(pk=pk)
+    context = {'data': data}
+    if request.method == "POST":
+        data.s_name = request.POST.get("name")
+        data.s_email = request.POST.get("email")
+        data.s_phone = request.POST.get("phone")
+        data.save()
+        messages.success(request, "Student details updated successfully.")
+    return render(request, 'update.html', context)
+
+
+def delete_student(request, id):
+    data = models.Students.manager.filter(pk=id)
+    context = {'data': data}
+    return render(request, 'delete.html', context)

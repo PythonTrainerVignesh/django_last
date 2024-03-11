@@ -28,4 +28,9 @@ urlpatterns = [
 
     path('dashboard/', views.dashboard),
     path('register/', views.registration_page),
+
+    path('update_student/<int:pk>', views.update_student,
+         name='up_student'),
+    path('delete_student/<int:id>', views.delete_student,
+         name='del_student'),
 ]
