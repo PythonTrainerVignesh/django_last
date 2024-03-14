@@ -63,7 +63,7 @@
         <td>{{ i.s_email }}</td>
         <td>{{ i.s_phone }}</td>
         <td><button onclick="location.href='{% url 'up_student' pk=i.id %}'">Update</button></td>
-        <td><button onclick="location.href='{% url 'del_student' id=i.id %}'">Delete</button></td>
+        <td><button onclick="location.href='{% url 'del_student' pk=i.pk %}'">Delete</button></td>
         {% endfor %}
     </tr>
 </table>

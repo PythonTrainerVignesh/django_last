@@ -21,16 +21,18 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name="homepage"),
+    path('', views.home,
+         name="homepage"),
 
     path('login/', views.login_page),
     path('logout/', views.logout_page),
 
-    path('dashboard/', views.dashboard),
+    path('dashboard/', views.dashboard,
+         name='dashboard'),
     path('register/', views.registration_page),
 
     path('update_student/<int:pk>', views.update_student,
          name='up_student'),
-    path('delete_student/<int:id>', views.delete_student,
+    path('delete_student/<int:pk>', views.delete_student,
          name='del_student'),
 ]

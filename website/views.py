@@ -60,6 +60,7 @@ def dashboard(request):
 
 def update_student(request, pk):
     data = models.Students.manager.get(pk=pk)
+    # data = models.Students.manager.filter(pk=pk)
     context = {'data': data}
     if request.method == "POST":
         data.s_name = request.POST.get("name")
@@ -70,7 +71,7 @@ def update_student(request, pk):
     return render(request, 'update.html', context)
 
 
-def delete_student(request, id):
-    data = models.Students.manager.filter(pk=id)
-    context = {'data': data}
-    return render(request, 'delete.html', context)
+def delete_student(request, pk):
+    data = models.Students.manager.get(pk=pk)
+    data.delete()
+    return redirect('dashboard')

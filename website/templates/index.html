@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% include 'navbar.html' %}
+{% load static %}
 {% block content %}
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
     <title>Index</title>
 </head>
 <body>
-<h1 style="text-align: center">Home</h1>
+<img src="{% static 'bg.jpg' %}" width=67.5% height="800" style="margin:5px 500px 0px 312px">
 </body>
 {% endblock content %}
 </html>
